@@ -6,31 +6,28 @@ puts "1. First Non-Repeated Character: "
   does not repeat. If all characters repeat, return nil.
 =end
 
-#* Solution: Using shortcut approach.
+#* Solution:
 def first_non_repeated(string)
+  char_count = Hash.new(0)
 
+  # Count occurrences of each character
+  string.each_char do |char|
+    char_count[char] += 1
+  end
 
+  # Find the first character with count 1
+  string.each_char do |char|
+    return char if char_count[char] == 1
+  end
 
+  # If all characters repeat, return nil
+  nil
 end
 
 
 puts first_non_repeated("aabbccddeffg") # => "g"
 puts first_non_repeated("aabbcc") # => nil
 puts first_non_repeated("swiss") # => "w"
-
-
-#* Solution: Using custom approach.
-def first_non_repeated(string)
-
-
-
-end
-
-
-puts first_non_repeated("aabbccddeffg") # => "g"
-puts first_non_repeated("aabbcc") # => nil
-puts first_non_repeated("swiss") # => "w"
-
 
 
 
@@ -43,24 +40,21 @@ puts "\n\n2. Find All Permutations of a String: "
 =end
 
 
-#* Solution: Using shortcut approach.
+#* Solution:
 def find_permutations(string)
+  return [string] if string.length <= 1
 
+  permutations = []
+  string.each_char.with_index do |char, index|
+    remaining_chars = string[0...index] + string[index+1..-1]
+    sub_permutations = find_permutations(remaining_chars)
 
+    sub_permutations.each do |sub_perm|
+      permutations << char + sub_perm
+    end
+  end
 
-end
-
-
-puts find_permutations("abc").inspect # => ["abc", "acb", "bac", "bca", "cab", "cba"]
-puts find_permutations("ab").inspect # => ["ab", "ba"]
-puts find_permutations("a").inspect # => ["a"]
-
-
-#* Solution: Using custom approach.
-def find_permutations(string)
-
-
-
+  permutations
 end
 
 
@@ -79,24 +73,10 @@ puts "\n\n3. Count Words in a String: "
 =end
 
 
-#* Solution: Using shortcut approach.
+#* Solution:
 def count_words(string)
-
-
-
-end
-
-
-puts count_words("Hello, this is a test.") # => 5
-puts count_words("OneWord") # => 1
-puts count_words(" ") # => 0
-
-
-#* Solution: Using custom approach.
-def count_words(string)
-
-
-
+  words = string.strip.split(/\s+/)
+  words.length
 end
 
 
@@ -115,24 +95,16 @@ puts "\n\n4. Count Vowels: "
 =end
 
 
-#* Solution: Using shortcut approach.
+#* Solution:
 def count_vowels(string)
+  vowels = ['a', 'e', 'i', 'o', 'u']
+  count = 0
 
+  string.downcase.each_char do |char|
+    count += 1 if vowels.include?(char)
+  end
 
-
-end
-
-
-puts count_vowels("Hello") # => 2
-puts count_vowels("Ruby") # => 1
-puts count_vowels("Sky") # => 0
-
-
-#* Solution: Using custom approach.
-def count_vowels(string)
-
-
-
+  count
 end
 
 
@@ -151,24 +123,15 @@ puts "\n\n5. Capitalize Every Words: "
 =end
 
 
-#* Solution: Using shortcut approach.
+#* Solution:
 def capitalize_words(string)
-
-
-
+  words = string.split(' ')
+  capitalized_words = words.map { |word| word.capitalize }
+  capitalized_words.join(' ')
 end
 
-puts capitalize_words("hello world") # => "Hello World"
-puts capitalize_words("ruby is fun") # => "Ruby Is Fun"
-puts capitalize_words("capitalize this") # => "Capitalize This"
 
-
-#* Solution: Using custom approach.
-def capitalize_words(string)
-
-
-
-end
+#* Solution:
 
 puts capitalize_words("hello world") # => "Hello World"
 puts capitalize_words("ruby is fun") # => "Ruby Is Fun"
@@ -185,23 +148,16 @@ puts "\n\n6. Find All Unique Characters: "
 =end
 
 
-#* Solution: Using shortcut appraoch.
+#* Solution:
 def unique_characters(string)
+  char_count = Hash.new(0)
 
+  string.each_char do |char|
+    char_count[char] += 1
+  end
 
-
-end
-
-puts unique_characters("hello world") # => "he wrd"
-puts unique_characters("abcdef") # => "abcdeg"
-puts unique_characters("aabbcc") # => ""
-
-
-#* Solution: Using custom approach.
-def unique_characters(string)
-
-
-
+  unique_chars = string.chars.select { |char| char_count[char] == 1 }
+  unique_chars.join
 end
 
 puts unique_characters("hello world") # => "he wrd"
@@ -219,23 +175,19 @@ puts "\n\n7. Remove Duplicates From String: "
 =end
 
 
-#* Solution: Using shortcut approach.
+#* Solution:
 def remove_duplicates(string)
+  seen_chars = {}
+  result = ""
 
+  string.each_char do |char|
+    unless seen_chars[char]
+      result << char
+      seen_chars[char] = true
+    end
+  end
 
-
-end
-
-puts remove_duplicates("hello") # => "helo"
-puts remove_duplicates("banana") # => "ban"
-puts remove_duplicates("Ruby") # => "Ruby"
-
-
-#* Solution: Using custom approach.
-def remove_duplicates(string)
-
-
-
+  result
 end
 
 puts remove_duplicates("hello") # => "helo"
@@ -253,29 +205,20 @@ puts "\n\n8. Anagram Check: "
 =end
 
 
-#* Solution: Using shortcut approach.
+#* Solution:
 def are_anagrams(string1, string2)
+  char_count1 = Hash.new(0)
+  char_count2 = Hash.new(0)
 
+  string1.downcase.each_char { |char| char_count1[char] += 1 }
+  string2.downcase.each_char { |char| char_count2[char] += 1 }
 
-
+  char_count1 == char_count2
 end
 
 puts are_anagrams("listen", "silent") # => true
 puts are_anagrams("hello", "world") # => false
 puts are_anagrams("evil", "vile") # =>  true
-
-
-#* Solution: Using custom approach.
-def are_anagrams(string1, string2)
-
-
-
-end
-
-puts are_anagrams("listen", "silent") # => true
-puts are_anagrams("hello", "world") # => false
-puts are_anagrams("evil", "vile") # =>  true
-
 
 
 
@@ -289,23 +232,30 @@ puts "\n\n"
 =end
 
 
-#* Solution: Using shortcut approach.
+#* Solution:
 def palindromic_substring(string)
+  longest_palindrome = ""
 
+  (0...string.length).each do |i|
+    # Check for odd-length palindromes
+    palindrome = expand_around_center(string, i, i)
+    longest_palindrome = palindrome if palindrome.length > longest_palindrome.length
 
+    # Check for even-length palindromes
+    palindrome = expand_around_center(string, i, i + 1)
+    longest_palindrome = palindrome if palindrome.length > longest_palindrome.length
+  end
 
+  longest_palindrome
 end
 
-puts palindromic_substring("babad") # => "bab" or "aba"
-puts palindromic_substring("cbbd") # => "bb"
-puts palindromic_substring("racecar") # => "racecar"
+def expand_around_center(string, left, right)
+  while left >= 0 && right < string.length && string[left] == string[right]
+    left -= 1
+    right += 1
+  end
 
-
-#* Solution: Using custom approach.
-def palindromic_substring(string)
-
-
-
+  string[left + 1...right]
 end
 
 puts palindromic_substring("babad") # => "bab" or "aba"
@@ -322,23 +272,13 @@ puts "\n\n10. Remove Whitespaces: "
 =end
 
 
-#* Solution: Using shortcut approach.
+#* Solution:
 def remove_whitespaces(string)
-
-
-
-end
-
-puts remove_whitespaces("hello world") # => "helloworld"
-puts remove_whitespaces("  spaced out  ") # => "spacedout"
-puts remove_whitespaces("no_spaces") # => "no_spaces"
-
-
-#* Solution: Using custom approach.
-def remove_whitespaces(string)
-
-
-
+  result = ""
+  string.each_char do |char|
+    result << char unless char.match(/\s/)
+  end
+  result
 end
 
 puts remove_whitespaces("hello world") # => "helloworld"
