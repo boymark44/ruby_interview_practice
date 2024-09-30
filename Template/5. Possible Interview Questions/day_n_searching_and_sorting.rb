@@ -417,3 +417,280 @@ puts selection_sort([3, 2, 1]).inspect # Output: [1, 2, 3] (Reverse order)
 
 #* 3. Insertion Sort
 puts "\n\n"
+
+=begin
+  Insertion Sort is a comparison-based sorting algorithm that builds the final sorted list one item at a
+  time by repeatedly taking the next item and inserting it into the correct position.
+=end
+
+def insertion_sort(arr)
+  (1...arr.length).each do |i|
+    key = arr[i]
+    j = i - 1
+    while j >= 0 && arr[j] > key
+      arr[j + 1] = arr[j]
+      j -= 1
+    end
+    arr[j + 1] = key
+  end
+  arr
+end
+
+# Edge Cases
+puts insertion_sort([]).inspect # Output: [] (Empty array)
+puts insertion_sort([1]).inspect # Output: [1] (One element)
+puts insertion_sort([2, 2, 2]).inspect # Output: [2, 2, 2] (All elements the same)
+puts insertion_sort([1, 2, 3]).inspect # Output: [1, 2, 3] (Already sorted)
+puts insertion_sort([3, 2, 1]).inspect # Output: [1, 2, 3] (Reverse order)
+
+
+
+#* 4. Merge Sort
+puts "\n\n4. Merge Sort: "
+
+=begin
+  Merge Sort is a divide-and-conquer algorithm that divides the input array
+  into two halves, sorts each half, and then merges the two sorted halves.
+=end
+
+def merge_sort(arr)
+  return arr if arr.length <= 1
+
+  mid = arr.length / 2
+  left = merge_sort(arr[0...mid])
+  right = merge_sort(arr[mid..-1])
+  merge(left, right)
+end
+
+def merge(left, right)
+  sorted = []
+  until left.empty? || right.empty?
+    if left.first <= right.first
+      sorted << left.shift
+    else
+      sorted << right.shift
+    end
+  end
+  sorted + left + right
+end
+
+# Edge Cases
+puts merge_sort([]).inspect # Output: [] (Empty array)
+puts merge_sort([1]).inspect # Output: [1] (One element)
+puts merge_sort([2, 2, 2]).inspect # Output: [2, 2, 2] (All elements the same)
+puts merge_sort([1, 2, 3]).inspect # Output: [1, 2, 3] (Already sorted)
+puts merge_sort([3, 2, 1]).inspect # Output: [1, 2, 3] (Reverse order)
+
+
+
+#* 5. Quick Sort
+puts "\n\n5. Quick Sort: "
+
+=begin
+  Quick Sort is a divide-and-conquer algorithm that selects a “pivot” element from the array and partitions
+  the other elements into two sub-arrays, according to whether they are less than or greater than the pivot.
+=end
+
+def quick_sort(arr)
+  return arr if arr.length <= 1
+
+  pivot = arr.delete_at(rand(arr.length))
+  left, right = arr.partition { |x| x < pivot }
+  [*quick_sort(left), pivot, *quick_sort(right)]
+end
+
+# Edge Cases
+puts quick_sort([]).inspect # Output: [] (Empty array)
+puts quick_sort([1]).inspect # Output: [1] (One element)
+puts quick_sort([2, 2, 2]).inspect # Output: [2, 2, 2] (All elements the same)
+puts quick_sort([1, 2, 3]).inspect # Output: [1, 2, 3] (Already sorted)
+puts quick_sort([3, 2, 1]).inspect # Output: [1, 2, 3] (Reverse order)
+
+
+
+#* 6. Heap Sort
+puts "\n\n6. Heap Sort: "
+
+=begin
+  Heap Sort is a comparison-based sorting algorithm that uses a binary heap data structure. It first builds
+  a heap from the input data, and then repeatedly extracts the maximum element from the heap, which
+  results in a sorted array.
+=end
+
+def heap_sort(arr)
+  n = arr.length
+
+  (n / 2 - 1).downto(0) { |i| heapify(arr, n, i) }
+  (n - 1).downto(1) do |i|
+    arr[0], arr[i] = arr[i], arr[0]
+    heapify(arr, i, 0)
+  end
+  arr
+end
+
+def heapify(arr, n, i)
+  largest = i
+  left = 2 * i + 1
+  right = 2 * i + 2
+
+  largest = left if left < n && arr[left] > arr[largest]
+  largest = right if right < n && arr[right] > arr[largest]
+
+  if largest != i
+    arr[i], arr[largest] = arr[largest], arr[i]
+    heapify(arr, n, largest)
+  end
+end
+
+# Edge Cases
+puts heap_sort([]).inspect # Output: [] (Empty array)
+puts heap_sort([1]).inspect # Output: [1] (One element)
+puts heap_sort([2, 2, 2]).inspect # Output: [2, 2, 2] (All elements the same)
+puts heap_sort([1, 2, 3]).inspect # Output: [1, 2, 3] (Already sorted)
+puts heap_sort([3, 2, 1]).inspect # Output: [1, 2, 3] (Reverse order)
+
+
+
+#* 7. Counting Sort
+puts "\n\n7. Counting Sort: "
+
+=begin
+  Counting Sort is a non-comparison-based sorting algorithm that sorts elements by
+  counting the number of occurrences of each unique element in the array.
+=end
+
+def counting_sort(arr, max_value)
+  counts = Array.new(max_value + 1, 0)
+  arr.each { |num| counts[num] += 1 }
+
+  sorted_index = 0
+  counts.each_with_index do |count, num|
+    count.times do
+      arr[sorted_index] = num
+      sorted_index += 1
+    end
+  end
+  arr
+end
+
+# Edge Cases
+puts counting_sort([], 5).inspect # Output: [] (Empty array)
+puts counting_sort([1], 1).inspect # Output: [1] (One element)
+puts counting_sort([2, 2, 2], 2).inspect # Output: [2, 2, 2] (All elements the same)
+puts counting_sort([0, 1, 2, 3, 4, 5], 5).inspect # Output: [0, 1, 2, 3, 4, 5] (Elements from 0 to max_value)
+puts counting_sort([6, 7, 8], 5).inspect # Output: [6, 7, 8] (Elements not in range 0 to max_value)
+
+
+
+#* 8. Radix Sort
+puts "\n\n8. Radix Sort: "
+
+=begin
+  Radix Sort is a non-comparison-based sorting algorithm that sorts numbers by processing individual digits.
+  It processes digits from the least significant to the most significant.
+=end
+
+def radix_sort(arr)
+  max_num = arr.max
+  exp = 1
+  while max_num / exp > 0
+    counting_sort_by_digit(arr, exp)
+    exp *= 10
+  end
+  arr
+end
+
+def counting_sort_by_digit(arr, exp)
+  output = Array.new(arr.length, 0)
+  count = Array.new(10, 0)
+
+  arr.each { |num| count[(num / exp) % 10] += 1 }
+  (1...10).each { |i| count[i] += count[i - 1] }
+
+  (arr.length - 1).downto(0) do |i|
+    output[count[(arr[i] / exp) % 10] - 1] = arr[i]
+    count[(arr[i] / exp) % 10] -= 1
+  end
+
+  (0...arr.length).each { |i| arr[i] = output[i] }
+end
+
+# Edge Cases
+puts radix_sort([]).inspect # Output: [] (Empty array)
+puts radix_sort([1]).inspect # Output: [1] (One element)
+puts radix_sort([2, 2, 2]).inspect # Output: [2, 2, 2] (All elements the same)
+puts radix_sort([170, 45, 75, 90, 802, 24, 2, 66]).inspect # Output: [2, 24, 45, 66, 75, 90, 170, 802] (Different number of digits)
+puts radix_sort([-170, -45, -75, -90, -802, -24, -2, -66]).inspect # Output: [-802, -170, -90, -75, -66, -45, -24, -2] (Negative numbers)
+
+
+
+#* 9. Bucket Sort
+puts "\n\n9. Bucket Sort: "
+
+=begin
+  Bucket Sort is a non-comparison-based sorting algorithm that distributes elements into several buckets,
+  sorts each bucket individually, and then concatenates the sorted buckets.
+=end
+
+def bucket_sort(arr, bucket_size = 5)
+  return arr if arr.empty?
+
+  min_value = arr.min
+  max_value = arr.max
+  bucket_count = ((max_value - min_value) / bucket_size).floor + 1
+  buckets = Array.new(bucket_count) { [] }
+
+  arr.each do |num|
+    buckets[((num - min_value) / bucket_size).floor] << num
+  end
+
+  arr.clear
+  buckets.each do |bucket|
+    insertion_sort(bucket)
+    arr.concat(bucket)
+  end
+  arr
+end
+
+# Edge Cases
+puts bucket_sort([]).inspect # Output: [] (Empty array)
+puts bucket_sort([1]).inspect # Output: [1] (One element)
+puts bucket_sort([2, 2, 2]).inspect # Output: [2, 2, 2] (All elements the same)
+puts bucket_sort([1, 2, 3, 4, 5]).inspect # Output: [1, 2, 3, 4, 5] (Uniformly distributed)
+puts bucket_sort([1, 10, 100, 1000]).inspect # Output: [1, 10, 100, 1000] (Not uniformly distributed)
+
+
+
+#* 10. Shell Sort
+puts "\n\n10. Shell Sort: "
+
+=begin
+  Shell Sort is a comparison-based sorting algorithm that generalizes insertion sort by allowing
+  the exchange of items that are far apart. It uses a sequence of gaps to sort elements.
+=end
+
+def shell_sort(arr)
+  n = arr.length
+  gap = n / 2
+
+  while gap > 0
+    (gap...n).each do |i|
+      temp = arr[i]
+      j = i
+      while j >= gap && arr[j - gap] > temp
+        arr[j] = arr[j - gap]
+        j -= gap
+      end
+      arr[j] = temp
+    end
+    gap /= 2
+  end
+  arr
+end
+
+# Edge Cases
+puts shell_sort([]).inspect # Output: [] (Empty array)
+puts shell_sort([1]).inspect # Output: [1] (One element)
+puts shell_sort([2, 2, 2]).inspect # Output: [2, 2, 2] (All elements the same)
+puts shell_sort([1, 2, 3]).inspect # Output: [1, 2, 3] (Already sorted)
+puts shell_sort([3, 2, 1]).inspect # Output: [1, 2, 3] (Reverse order)
