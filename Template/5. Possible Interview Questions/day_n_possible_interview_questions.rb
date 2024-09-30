@@ -168,7 +168,7 @@ def climb_stairs(n)
   second
 end
 
-# Edge Cases/Tests
+# Edge Cases/Tests:
 puts climb_stairs(2) # 2
 puts climb_stairs(3) # 3
 puts climb_stairs(4) # 5
@@ -249,7 +249,7 @@ def merge(intervals)
   merged
 end
 
-# Edge Cases/Tests
+# Edge Cases/Tests:
 puts merge([[1,3],[2,6],[8,10],[15,18]]).inspect # [[1, 6], [8, 10], [15, 18]]
 puts merge([[1,4],[4,5]]).inspect # [[1, 5]]
 puts merge([[1,4],[0,4]]).inspect # [[0, 4]]
@@ -288,7 +288,7 @@ def find_min(nums)
   nums[left]
 end
 
-# Edge Cases/Tests
+# Edge Cases/Tests:
 puts find_min([3,4,5,1,2]) # 1
 puts find_min([4,5,6,7,0,1,2]) # 0
 puts find_min([11,13,15,17]) # 11
@@ -323,7 +323,7 @@ def longest_common_prefix(strs)
   first[0...i]
 end
 
-# Edge Cases/Tests
+# Edge Cases/Tests:
 puts longest_common_prefix(["flower","flow","flight"]) # "fl"
 puts longest_common_prefix(["dog","racecar","car"]) # ""
 puts longest_common_prefix(["interspecies","interstellar","interstate"]) # "inters"
@@ -350,7 +350,7 @@ def is_anagram(s, t)
   s.chars.sort == t.chars.sort
 end
 
-# Edge Cases/Tests
+# Edge Cases/Tests:
 puts is_anagram("anagram", "nagaram") # true
 puts is_anagram("rat", "car") # false
 puts is_anagram("a", "a") # true
@@ -383,7 +383,7 @@ def group_anagrams(strs)
   groups.values
 end
 
-# Edge Cases/Tests
+# Edge Cases/Tests:
 puts group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"]).inspect # [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]
 puts group_anagrams([""]).inspect # [[""]]
 puts group_anagrams(["a"]).inspect # [["a"]]
@@ -425,7 +425,7 @@ def search_insert(nums, target)
   left
 end
 
-# Edge Cases/Tests
+# Edge Cases/Tests:
 puts search_insert([1,3,5,6], 5) # 2
 puts search_insert([1,3,5,6], 2) # 1
 puts search_insert([1,3,5,6], 7) # 4
@@ -450,7 +450,7 @@ def length_of_last_word(s)
   s.split.last.length
 end
 
-# Edge Cases/Tests
+# Edge Cases/Tests:
 puts length_of_last_word("Hello World") # 5
 puts length_of_last_word("   fly me   to   the moon  ") # 4
 puts length_of_last_word("luffy is still joyboy") # 6
@@ -484,7 +484,7 @@ def plus_one(digits)
   [1] + digits
 end
 
-# Edge Cases/Tests
+# Edge Cases/Tests:
 puts plus_one([1,2,3]).inspect # [1, 2, 4]
 puts plus_one([4,3,2,1]).inspect # [4, 3, 2, 2]
 puts plus_one([9]).inspect # [1, 0]
@@ -523,7 +523,7 @@ def add_binary(a, b)
   result.reverse.join
 end
 
-# Edge Cases/Tests
+# Edge Cases/Tests:
 puts add_binary("11", "1") # "100"
 puts add_binary("1010", "1011") # "10101"
 puts add_binary("0", "0") # "0"
@@ -564,7 +564,7 @@ def my_sqrt(x)
   right
 end
 
-# Edge Cases/Tests
+# Edge Cases/Tests:
 puts my_sqrt(4) # 2
 puts my_sqrt(8) # 2
 puts my_sqrt(0) # 0
@@ -600,7 +600,7 @@ def remove_duplicates(nums)
   i + 1
 end
 
-# Edge Cases/Tests
+# Edge Cases/Tests:
 puts remove_duplicates([1,1,2]) # 2
 puts remove_duplicates([0,0,1,1,1,2,2,3,3,4]) # 5
 puts remove_duplicates([]) # 0
@@ -638,7 +638,7 @@ def max_depth(root)
   [left_depth, right_depth].max + 1
 end
 
-# Edge Cases/Tests
+# Edge Cases/Tests:
 root = TreeNode.new(3, TreeNode.new(9), TreeNode.new(20, TreeNode.new(15), TreeNode.new(7)))
 puts max_depth(root) # 3
 
@@ -670,6 +670,8 @@ Description: Given the root of a binary tree, check whether it is a mirror of it
 # If both trees are nil, return true
 # If one tree is nil and the other is not, return false
 # Check if the values of the current nodes are equal and recursively check the left subtree of one tree with the right subtree of the other tree and vice versa
+
+# Solution:
 class TreeNode
   attr_accessor :val, :left, :right
   def initialize(val = 0, left = nil, right = nil)
@@ -690,7 +692,7 @@ def is_mirror(t1, t2)
   t1.val == t2.val && is_mirror(t1.right, t2.left) && is_mirror(t1.left, t2.right)
 end
 
-# Edge Cases/Tests
+# Edge Cases/Tests:
 root = TreeNode.new(1, TreeNode.new(2, TreeNode.new(3), TreeNode.new(4)), TreeNode.new(2, TreeNode.new(4), TreeNode.new(3)))
 puts is_symmetric(root) # true
 
@@ -749,7 +751,7 @@ def helper(nums, left, right)
   node
 end
 
-# Edge Cases/Tests
+# Edge Cases/Tests:
 def print_tree(node)
   return [] if node.nil?
   [node.val] + print_tree(node.left) + print_tree(node.right)
@@ -804,7 +806,7 @@ def check_height(node)
   [left_height, right_height].max + 1
 end
 
-# Edge Cases/Tests
+# Edge Cases/Tests:
 root = TreeNode.new(3, TreeNode.new(9), TreeNode.new(20, TreeNode.new(15), TreeNode.new(7)))
 puts is_balanced(root) # true
 
