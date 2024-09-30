@@ -2,10 +2,11 @@
 puts "\n\n1. Linear Search: "
 
 =begin
-   Linear search is a simple algorithm that checks each element in the list sequentially
-   until the target element is found or the list ends.
+  Linear search is a simple algorithm that checks each element in the list sequentially
+  until the target element is found or the list ends.
 =end
 
+# Solution:
 def linear_search(arr, target)
   arr.each_with_index do |element, index|
     return index if element == target
@@ -13,7 +14,7 @@ def linear_search(arr, target)
   nil
 end
 
-# Edge Cases
+# Edge Cases:
 puts linear_search([], 5).inspect # Output: nil (Empty array)
 puts linear_search([5, 3, 8, 4, 2], 5).inspect # Output: 0 (First element)
 puts linear_search([5, 3, 8, 4, 2], 2).inspect # Output: 4 (Last element)
@@ -30,6 +31,7 @@ puts "\n\n2. Binary Search: "
   from a sorted list of items by repeatedly dividing the search interval in half.
 =end
 
+# Solution:
 def binary_search(arr, target)
   low = 0
   high = arr.length - 1
@@ -47,7 +49,7 @@ def binary_search(arr, target)
   nil
 end
 
-# Edge Cases
+# Edge Cases:
 puts binary_search([], 5).inspect # Output: nil (Empty array)
 puts binary_search([2, 3, 4, 5, 8], 2).inspect # Output: 0 (First element)
 puts binary_search([2, 3, 4, 5, 8], 8).inspect # Output: 4 (Last element)
@@ -64,6 +66,7 @@ puts "\n\n3. Jump Search: "
   linear search within the block.
 =end
 
+# Solution:
 def jump_search(arr, target)
   length = arr.length
   step = Math.sqrt(length).to_i
@@ -84,7 +87,7 @@ def jump_search(arr, target)
   nil
 end
 
-# Edge Cases
+# Edge Cases:
 puts jump_search([], 5).inspect # Output: nil (Empty array)
 puts jump_search([2, 3, 4, 5, 8], 2).inspect # Output: 0 (First element)
 puts jump_search([2, 3, 4, 5, 8], 8).inspect # Output: 4 (Last element)
@@ -101,6 +104,7 @@ puts "\n\n4. Interpolation Search: "
   uniformly distributed data, estimating the position of the target value.
 =end
 
+# Solution:
 def interpolation_search(arr, target)
   low = 0
   high = arr.length - 1
@@ -119,7 +123,7 @@ def interpolation_search(arr, target)
   nil
 end
 
-# Edge Cases
+# Edge Cases:
 puts interpolation_search([], 5).inspect # Output: nil (Empty array)
 puts interpolation_search([2, 3, 4, 5, 8], 2).inspect # Output: 0 (First element)
 puts interpolation_search([2, 3, 4, 5, 8], 8).inspect # Output: 4 (Last element)
@@ -136,6 +140,7 @@ puts "\n\n5. Exponential Search: "
  useful for unbounded or infinite lists.
 =end
 
+# Solution:
 def exponential_search(arr, target)
   return 0 if arr[0] == target
 
@@ -147,7 +152,7 @@ def exponential_search(arr, target)
   binary_search(arr[(i/2)..[i, arr.length].min], target)
 end
 
-# Edge Cases
+# Edge Cases:
 puts exponential_search([], 5).inspect # Output: nil (Empty array)
 puts exponential_search([2, 3, 4, 5, 8], 2).inspect # Output: 0 (First element)
 puts exponential_search([2, 3, 4, 5, 8], 8).inspect # Output: 4 (Last element)
@@ -164,6 +169,7 @@ puts "\n\n6. Fibonacci Search: "
   numbers to divide the array into smaller sections.
 =end
 
+# Solution:
 def fibonacci_search(arr, target)
   fib_m2 = 0
   fib_m1 = 1
@@ -198,7 +204,7 @@ def fibonacci_search(arr, target)
   nil
 end
 
-# Edge Cases
+# Edge Cases:
 puts fibonacci_search([], 5).inspect # Output: nil (Empty array)
 puts fibonacci_search([2, 3, 4, 5, 8], 2).inspect # Output: 0 (First element)
 puts fibonacci_search([2, 3, 4, 5, 8], 8).inspect # Output: 4 (Last element)
@@ -215,6 +221,7 @@ puts "\n\n7. Ternary Search: "
   that splits the array into three parts instead of two.
 =end
 
+# Solution:
 def ternary_search(arr, target, left = 0, right = arr.length - 1)
   return nil if left > right
 
@@ -233,7 +240,7 @@ def ternary_search(arr, target, left = 0, right = arr.length - 1)
   end
 end
 
-# Edge Cases
+# Edge Cases:
 puts ternary_search([], 5).inspect # Output: nil (Empty array)
 puts ternary_search([2, 3, 4, 5, 8], 2).inspect # Output: 0 (First element)
 puts ternary_search([2, 3, 4, 5, 8], 8).inspect # Output: 4 (Last element)
@@ -250,6 +257,7 @@ puts ternary_search([2, 3, 4, 5, 5, 8], 5).inspect # Output: 3 or 4 (Duplicate e
   backtracking.
 =end
 
+# Solution:
 class Node
   attr_accessor :value, :left, :right
 
@@ -270,7 +278,7 @@ def dfs(root, target)
   dfs(root.right, target)
 end
 
-# Edge Cases
+# Edge Cases:
 root = Node.new(1)
 root.left = Node.new(2)
 root.right = Node.new(3)
@@ -294,6 +302,7 @@ puts "\n\n9. Breadth-First Search (BFS): "
   root and exploring all neighbors at the present depth before moving on to nodes at the next depth level.
 =end
 
+# Solution:
 class Node
   attr_accessor :value, :left, :right
 
@@ -318,7 +327,7 @@ def bfs(root, target)
   nil
 end
 
-# Edge Cases
+# Edge Cases:
 root = Node.new(1)
 root.left = Node.new(2)
 root.right = Node.new(3)
@@ -341,11 +350,12 @@ puts "\n\n10. Hash Search: "
  Hash search uses a hash table to map keys to values, allowing for fast data retrieval.
 =end
 
+# Solution:
 def hash_search(hash, key)
   hash[key]
 end
 
-# Edge Cases
+# Edge Cases:
 puts hash_search({}, :a).inspect # Output: nil (Empty hash)
 puts hash_search({ a: 1, b: 2, c: 3 }, :a).inspect # Output: 1 (First element)
 puts hash_search({ a: 1, b: 2, c: 3 }, :c).inspect # Output: 3 (Last element)
@@ -362,6 +372,7 @@ puts "\n\n11. Bubble Sort: "
   compares adjacent elements, and swaps them if they are in the wrong order.
 =end
 
+# Solution:
 def bubble_sort(arr)
   n = arr.length
   loop do
@@ -377,7 +388,7 @@ def bubble_sort(arr)
   arr
 end
 
-# Edge Cases
+# Edge Cases:
 puts bubble_sort([]).inspect # Output: [] (Empty array)
 puts bubble_sort([1]).inspect # Output: [1] (One element)
 puts bubble_sort([2, 2, 2]).inspect # Output: [2, 2, 2] (All elements the same)
@@ -394,6 +405,7 @@ puts "\n\n2. Selection Sort: "
   element from an unsorted list in each iteration and places it at the beginning.
 =end
 
+# Solution:
 def selection_sort(arr)
   n = arr.length
   (0...n).each do |i|
@@ -406,7 +418,7 @@ def selection_sort(arr)
   arr
 end
 
-# Edge Cases
+# Edge Cases:
 puts selection_sort([]).inspect # Output: [] (Empty array)
 puts selection_sort([1]).inspect # Output: [1] (One element)
 puts selection_sort([2, 2, 2]).inspect # Output: [2, 2, 2] (All elements the same)
@@ -423,6 +435,7 @@ puts "\n\n"
   time by repeatedly taking the next item and inserting it into the correct position.
 =end
 
+# Solution:
 def insertion_sort(arr)
   (1...arr.length).each do |i|
     key = arr[i]
@@ -436,7 +449,7 @@ def insertion_sort(arr)
   arr
 end
 
-# Edge Cases
+# Edge Cases:
 puts insertion_sort([]).inspect # Output: [] (Empty array)
 puts insertion_sort([1]).inspect # Output: [1] (One element)
 puts insertion_sort([2, 2, 2]).inspect # Output: [2, 2, 2] (All elements the same)
@@ -453,6 +466,7 @@ puts "\n\n4. Merge Sort: "
   into two halves, sorts each half, and then merges the two sorted halves.
 =end
 
+# Solution:
 def merge_sort(arr)
   return arr if arr.length <= 1
 
@@ -474,7 +488,7 @@ def merge(left, right)
   sorted + left + right
 end
 
-# Edge Cases
+# Edge Cases:
 puts merge_sort([]).inspect # Output: [] (Empty array)
 puts merge_sort([1]).inspect # Output: [1] (One element)
 puts merge_sort([2, 2, 2]).inspect # Output: [2, 2, 2] (All elements the same)
@@ -491,6 +505,7 @@ puts "\n\n5. Quick Sort: "
   the other elements into two sub-arrays, according to whether they are less than or greater than the pivot.
 =end
 
+# Solution:
 def quick_sort(arr)
   return arr if arr.length <= 1
 
@@ -499,7 +514,7 @@ def quick_sort(arr)
   [*quick_sort(left), pivot, *quick_sort(right)]
 end
 
-# Edge Cases
+# Edge Cases:
 puts quick_sort([]).inspect # Output: [] (Empty array)
 puts quick_sort([1]).inspect # Output: [1] (One element)
 puts quick_sort([2, 2, 2]).inspect # Output: [2, 2, 2] (All elements the same)
@@ -517,6 +532,7 @@ puts "\n\n6. Heap Sort: "
   results in a sorted array.
 =end
 
+# Solution:
 def heap_sort(arr)
   n = arr.length
 
@@ -542,7 +558,7 @@ def heapify(arr, n, i)
   end
 end
 
-# Edge Cases
+# Edge Cases:
 puts heap_sort([]).inspect # Output: [] (Empty array)
 puts heap_sort([1]).inspect # Output: [1] (One element)
 puts heap_sort([2, 2, 2]).inspect # Output: [2, 2, 2] (All elements the same)
@@ -559,6 +575,7 @@ puts "\n\n7. Counting Sort: "
   counting the number of occurrences of each unique element in the array.
 =end
 
+# Solution:
 def counting_sort(arr, max_value)
   counts = Array.new(max_value + 1, 0)
   arr.each { |num| counts[num] += 1 }
@@ -573,7 +590,7 @@ def counting_sort(arr, max_value)
   arr
 end
 
-# Edge Cases
+# Edge Cases:
 puts counting_sort([], 5).inspect # Output: [] (Empty array)
 puts counting_sort([1], 1).inspect # Output: [1] (One element)
 puts counting_sort([2, 2, 2], 2).inspect # Output: [2, 2, 2] (All elements the same)
@@ -590,6 +607,7 @@ puts "\n\n8. Radix Sort: "
   It processes digits from the least significant to the most significant.
 =end
 
+# Solution:
 def radix_sort(arr)
   max_num = arr.max
   exp = 1
@@ -615,7 +633,7 @@ def counting_sort_by_digit(arr, exp)
   (0...arr.length).each { |i| arr[i] = output[i] }
 end
 
-# Edge Cases
+# Edge Cases:
 puts radix_sort([]).inspect # Output: [] (Empty array)
 puts radix_sort([1]).inspect # Output: [1] (One element)
 puts radix_sort([2, 2, 2]).inspect # Output: [2, 2, 2] (All elements the same)
@@ -632,6 +650,7 @@ puts "\n\n9. Bucket Sort: "
   sorts each bucket individually, and then concatenates the sorted buckets.
 =end
 
+# Solution:
 def bucket_sort(arr, bucket_size = 5)
   return arr if arr.empty?
 
@@ -652,7 +671,7 @@ def bucket_sort(arr, bucket_size = 5)
   arr
 end
 
-# Edge Cases
+# Edge Cases:
 puts bucket_sort([]).inspect # Output: [] (Empty array)
 puts bucket_sort([1]).inspect # Output: [1] (One element)
 puts bucket_sort([2, 2, 2]).inspect # Output: [2, 2, 2] (All elements the same)
@@ -669,6 +688,7 @@ puts "\n\n10. Shell Sort: "
   the exchange of items that are far apart. It uses a sequence of gaps to sort elements.
 =end
 
+# Solution:
 def shell_sort(arr)
   n = arr.length
   gap = n / 2
@@ -688,7 +708,7 @@ def shell_sort(arr)
   arr
 end
 
-# Edge Cases
+# Edge Cases:
 puts shell_sort([]).inspect # Output: [] (Empty array)
 puts shell_sort([1]).inspect # Output: [1] (One element)
 puts shell_sort([2, 2, 2]).inspect # Output: [2, 2, 2] (All elements the same)
