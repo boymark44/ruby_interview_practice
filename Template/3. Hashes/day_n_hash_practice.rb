@@ -15,10 +15,10 @@ def find_key_by_value(hash, value)
 end
 
 hash = {a: 1, b: 2, c: 3}
-puts find_key_by_value(hash, 2) # => b
-puts find_key_by_value(hash, 4) # => nil
-puts find_key_by_value({}, 5)   # => nil
-puts find_key_by_value({x: 1, y: 1}, 1) # => x (returns first key for duplicate values)
+p find_key_by_value(hash, 2) # => b
+p find_key_by_value(hash, 4) # => nil
+p find_key_by_value({}, 5)   # => nil
+p find_key_by_value({x: 1, y: 1}, 1) # => x (returns first key for duplicate values)
 
 
 #* Solution: Using custom approach.
@@ -29,10 +29,10 @@ def find_key_by_value(hash, value)
 end
 
 hash = {a: 1, b: 2, c: 3}
-puts find_key_by_value(hash, 2) # => b
-puts find_key_by_value(hash, 4) # => nil
-puts find_key_by_value({}, 5)   # => nil
-puts find_key_by_value({x: 1, y: 1}, 1) # => x (returns first key for duplicate values)
+p find_key_by_value(hash, 2) # => b
+p find_key_by_value(hash, 4) # => nil
+p find_key_by_value({}, 5)   # => nil
+p find_key_by_value({x: 1, y: 1}, 1) # => x (returns first key for duplicate values)
 
 
 
@@ -54,10 +54,10 @@ end
 
 hash1 = {a: 1, b: 2}
 hash2 = {b: 3, c: 4}
-puts merge_hashes(hash1, hash2) # => {:a=>1, :b=>3, :c=>4}
-puts merge_hashes({x: 10}, {y: 20}) # => {:x=>10, :y=>20}
-puts merge_hashes({}, {a: 1}) # => {:a=>1}
-puts merge_hashes({a: 1}, {}) # => {:a=>1}
+p merge_hashes(hash1, hash2) # => {:a=>1, :b=>3, :c=>4}
+p merge_hashes({x: 10}, {y: 20}) # => {:x=>10, :y=>20}
+p merge_hashes({}, {a: 1}) # => {:a=>1}
+p merge_hashes({a: 1}, {}) # => {:a=>1}
 
 
 #* Solution: Using custom approach.
@@ -69,10 +69,10 @@ end
 
 hash1 = {a: 1, b: 2}
 hash2 = {b: 3, c: 4}
-puts merge_hashes(hash1, hash2) # => {:a=>1, :b=>3, :c=>4}
-puts merge_hashes({x: 10}, {y: 20}) # => {:x=>10, :y=>20}
-puts merge_hashes({}, {a: 1}) # => {:a=>1}
-puts merge_hashes({a: 1}, {}) # => {:a=>1}
+p merge_hashes(hash1, hash2) # => {:a=>1, :b=>3, :c=>4}
+p merge_hashes({x: 10}, {y: 20}) # => {:x=>10, :y=>20}
+p merge_hashes({}, {a: 1}) # => {:a=>1}
+p merge_hashes({a: 1}, {}) # => {:a=>1}
 
 
 
@@ -93,9 +93,9 @@ def array_to_hash(array)
 end
 
 array = ["apple", "banana", "cherry"]
-puts array_to_hash(array) # => {"apple"=>0, "banana"=>1, "cherry"=>2}
-puts array_to_hash([]) # => {}
-puts array_to_hash(["single"]) # => {"single"=>0}
+p array_to_hash(array) # => {"apple"=>0, "banana"=>1, "cherry"=>2}
+p array_to_hash([]) # => {}
+p array_to_hash(["single"]) # => {"single"=>0}
 
 
 #* Solution: Using custom approach.
@@ -106,9 +106,9 @@ def array_to_hash(array)
 end
 
 array = ["apple", "banana", "cherry"]
-puts array_to_hash(array) # => {"apple"=>0, "banana"=>1, "cherry"=>2}
-puts array_to_hash([]) # => {}
-puts array_to_hash(["single"]) # => {"single"=>0}
+p array_to_hash(array) # => {"apple"=>0, "banana"=>1, "cherry"=>2}
+p array_to_hash([]) # => {}
+p array_to_hash(["single"]) # => {"single"=>0}
 
 
 
@@ -127,9 +127,9 @@ def count_frequencies(string)
 
 end
 
-puts count_frequencies("hello") # => {"h"=>1, "e"=>1, "l"=>2, "o"=>1}
-puts count_frequencies("") # => {}
-puts count_frequencies("aaa") # => {"a"=>3}
+p count_frequencies("hello") # => {"h"=>1, "e"=>1, "l"=>2, "o"=>1}
+p count_frequencies("") # => {}
+p count_frequencies("aaa") # => {"a"=>3}
 
 
 #* Solution: Using custom approach.
@@ -138,9 +138,9 @@ def count_frequencies(string)
 
 end
 
-puts count_frequencies("hello") # => {"h"=>1, "e"=>1, "l"=>2, "o"=>1}
-puts count_frequencies("") # => {}
-puts count_frequencies("aaa") # => {"a"=>3}
+p count_frequencies("hello") # => {"h"=>1, "e"=>1, "l"=>2, "o"=>1}
+p count_frequencies("") # => {}
+p count_frequencies("aaa") # => {"a"=>3}
 
 
 
@@ -160,9 +160,9 @@ def invert_hash(hash)
 end
 
 hash = {a: 1, b: 2, c: 3}
-puts invert_hash(hash) # => {1=>:a, 2=>:b, 3=>:c}
-puts invert_hash({}) # => {}
-puts invert_hash({x: 1, y: 1}) # => {1=>:y} (last occurrence wins for duplicate values)
+p invert_hash(hash) # => {1=>:a, 2=>:b, 3=>:c}
+p invert_hash({}) # => {}
+p invert_hash({x: 1, y: 1}) # => {1=>:y} (last occurrence wins for duplicate values)
 
 
 #* Solution: Using custom approach.
@@ -173,9 +173,9 @@ def invert_hash(hash)
 end
 
 hash = {a: 1, b: 2, c: 3}
-puts invert_hash(hash) # => {1=>:a, 2=>:b, 3=>:c}
-puts invert_hash({}) # => {}
-puts invert_hash({x: 1, y: 1}) # => {1=>:y} (last occurrence wins for duplicate values)
+p invert_hash(hash) # => {1=>:a, 2=>:b, 3=>:c}
+p invert_hash({}) # => {}
+p invert_hash({x: 1, y: 1}) # => {1=>:y} (last occurrence wins for duplicate values)
 
 
 #* 6. Delete Key-Value Pair by Key
@@ -195,9 +195,9 @@ def delete_by_key(hash, key)
 end
 
 hash = { a: 1, b: 2, c: 3 }
-puts delete_by_key(hash, :b) # => {:a=>1, :c=>3}
-puts delete_by_key(hash, :d) # => {:a=>1, :c=>3}
-puts delete_by_key({}, :a) # => {}
+p delete_by_key(hash, :b) # => {:a=>1, :c=>3}
+p delete_by_key(hash, :d) # => {:a=>1, :c=>3}
+p delete_by_key({}, :a) # => {}
 
 
 #* Solution: Using custom approach.
@@ -208,9 +208,9 @@ def delete_by_key(hash, key)
 end
 
 hash = { a: 1, b: 2, c: 3 }
-puts delete_by_key(hash, :b) # => {:a=>1, :c=>3}
-puts delete_by_key(hash, :d) # => {:a=>1, :c=>3}
-puts delete_by_key({}, :a) # => {}
+p delete_by_key(hash, :b) # => {:a=>1, :c=>3}
+p delete_by_key(hash, :d) # => {:a=>1, :c=>3}
+p delete_by_key({}, :a) # => {}
 
 
 
@@ -230,9 +230,9 @@ def key_exists?(hash, key)
 end
 
 hash = { a: 1, b: 2 }
-puts key_exists?(hash, :a) # => true
-puts key_exists?(hash, :c) # => false
-puts key_exists?({}, :x) # => false
+p key_exists?(hash, :a) # => true
+p key_exists?(hash, :c) # => false
+p key_exists?({}, :x) # => false
 
 
 #* Solution: Using custom approach.
@@ -243,9 +243,9 @@ def key_exists?(hash, key)
 end
 
 hash = { a: 1, b: 2 }
-puts key_exists?(hash, :a) # => true
-puts key_exists?(hash, :c) # => false
-puts key_exists?({}, :x) # => false
+p key_exists?(hash, :a) # => true
+p key_exists?(hash, :c) # => false
+p key_exists?({}, :x) # => false
 
 
 #* 8. Sum of Values in a Hash
@@ -265,9 +265,9 @@ def sum_values(hash)
 end
 
 hash = { a: 1, b: 2, c: 3 }
-puts sum_values(hash) # => 6
-puts sum_values({}) # => 0
-puts sum_values({x: -1, y: 1}) # => 0
+p sum_values(hash) # => 6
+p sum_values({}) # => 0
+p sum_values({x: -1, y: 1}) # => 0
 
 
 #* Solution: Using custom approach.
@@ -278,9 +278,9 @@ def sum_values(hash)
 end
 
 hash = { a: 1, b: 2, c: 3 }
-puts sum_values(hash) # => 6
-puts sum_values({}) # => 0
-puts sum_values({x: -1, y: 1}) # => 0
+p sum_values(hash) # => 6
+p sum_values({}) # => 0
+p sum_values({x: -1, y: 1}) # => 0
 
 
 
@@ -300,9 +300,9 @@ def group_by_length(array)
 end
 
 array = ["cat", "dog", "elephant", "ant"]
-puts group_by_length(array) # => {3=>["cat", "dog", "ant"], 8=>["elephant"]}
-puts group_by_length([]) # => {}
-puts group_by_length(["", "a", "bb", "ccc"]) # => {0=>[""], 1=>["a"], 2=>["bb"], 3=>["ccc"]}
+p group_by_length(array) # => {3=>["cat", "dog", "ant"], 8=>["elephant"]}
+p group_by_length([]) # => {}
+p group_by_length(["", "a", "bb", "ccc"]) # => {0=>[""], 1=>["a"], 2=>["bb"], 3=>["ccc"]}
 
 
 #* Solution: Using custom approach.
@@ -313,9 +313,9 @@ def group_by_length(array)
 end
 
 array = ["cat", "dog", "elephant", "ant"]
-puts group_by_length(array) # => {3=>["cat", "dog", "ant"], 8=>["elephant"]}
-puts group_by_length([]) # => {}
-puts group_by_length(["", "a", "bb", "ccc"]) # => {0=>[""], 1=>["a"], 2=>["bb"], 3=>["ccc"]}
+p group_by_length(array) # => {3=>["cat", "dog", "ant"], 8=>["elephant"]}
+p group_by_length([]) # => {}
+p group_by_length(["", "a", "bb", "ccc"]) # => {0=>[""], 1=>["a"], 2=>["bb"], 3=>["ccc"]}
 
 
 
@@ -335,9 +335,9 @@ def initialize_with_default(array, default)
 end
 
 array = {:a, :b, :c}
-puts initialize_with_default(array, 0) # => {:a=>0, :b=>0, :c=>0}
-puts initialize_with_default([], 5) # => {}
-puts initialize_with_default([:x], "default") # => {:x=>"default"}
+p initialize_with_default(array, 0) # => {:a=>0, :b=>0, :c=>0}
+p initialize_with_default([], 5) # => {}
+p initialize_with_default([:x], "default") # => {:x=>"default"}
 
 
 #* Solution: Using custom approach.
@@ -348,9 +348,9 @@ def initialize_with_default(array, default)
 end
 
 array = {:a, :b, :c}
-puts initialize_with_default(array, 0) # => {:a=>0, :b=>0, :c=>0}
-puts initialize_with_default([], 5) # => {}
-puts initialize_with_default([:x], "default") # => {:x=>"default"}
+p initialize_with_default(array, 0) # => {:a=>0, :b=>0, :c=>0}
+p initialize_with_default([], 5) # => {}
+p initialize_with_default([:x], "default") # => {:x=>"default"}
 
 
 
@@ -370,10 +370,10 @@ def key_with_max_value(hash)
 
 end
 
-puts key_with_max_value({a: 10, b: 20, c: 30}) # => c
-puts key_with_max_value({x: 5, y: 15, z: 10}) # => y
-puts key_with_max_value({}) # => nil
-puts key_with_max_value({a: -10, b: -5, c: -15}) # => b
+p key_with_max_value({a: 10, b: 20, c: 30}) # => c
+p key_with_max_value({x: 5, y: 15, z: 10}) # => y
+p key_with_max_value({}) # => nil
+p key_with_max_value({a: -10, b: -5, c: -15}) # => b
 
 
 #* Solution: Using custom approach.
@@ -383,10 +383,10 @@ def key_with_max_value(hash)
 
 end
 
-puts key_with_max_value({a: 10, b: 20, c: 30}) # => c
-puts key_with_max_value({x: 5, y: 15, z: 10}) # => y
-puts key_with_max_value({}) # => nil
-puts key_with_max_value({a: -10, b: -5, c: -15}) # => b
+p key_with_max_value({a: 10, b: 20, c: 30}) # => c
+p key_with_max_value({x: 5, y: 15, z: 10}) # => y
+p key_with_max_value({}) # => nil
+p key_with_max_value({a: -10, b: -5, c: -15}) # => b
 
 
 
