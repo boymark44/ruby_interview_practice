@@ -15,25 +15,27 @@ puts "\n\n1. Simple Class with Getter and Setter Methods: "
 class Person
 
   # Attribute reader:
+  attr_reader :name, :age
 
   def initialize(name, age)
-
+    @name = name
+    self.age = age
   end
 
   def name=(name)
-
+    @name = name
   end
 
   def age=(age)
-
+    @age = age < 0 ? 0 : age
   end
 
 end
 
 
 person = Person.new("Mark Glenn", 25)
-puts person.name
-puts person.age
+puts person.name # => "Mark Glenn"
+puts person.age # => 25
 
 person.age = -5
 puts person.age # => 0 (age cannot be negative)
@@ -58,14 +60,14 @@ puts "\n\n2. Class Method for Counting Instances: "
 
 #* Solution:
 class Car
-
+  @@total_cars = 0
 
   def initialize
-
+    @@total_cars += 1
   end
 
   def self.total_cars
-
+    @@total_cars
   end
 
 end
@@ -95,22 +97,22 @@ puts "\n\n3. Class Inheritance: "
 class Animal
 
   def speak
-
+    "I am an animal"
   end
 
 end
 
 class Dog < Animal
-
-
-
+  def speak
+    "Woof!"
+  end
 end
 
 animal = Animal.new
 dog = Dog.new
 
-puts animal.speak
-puts dog.speak
+puts animal.speak.inspect
+puts dog.speak.inspect
 
 
 
