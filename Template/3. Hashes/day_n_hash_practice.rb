@@ -334,7 +334,7 @@ def initialize_with_default(array, default)
 
 end
 
-array = {:a, :b, :c}
+array = [:a, :b, :c]
 p initialize_with_default(array, 0) # => {:a=>0, :b=>0, :c=>0}
 p initialize_with_default([], 5) # => {}
 p initialize_with_default([:x], "default") # => {:x=>"default"}
